@@ -1,0 +1,1104 @@
+(dp1
+S'output'
+p2
+S"<class 'pymysql.err.InternalError'> (1071, u'Specified key was too long; max key length is 767 bytes')"
+p3
+sS'layer'
+p4
+S'/home/sanu/web2py/applications/app2/models/db1.py'
+p5
+sS'code'
+p6
+S"# auth.signature add default fields like the created on/ create by/ modified by/ modified on\ndb.define_table('blog_post',\n\tField('title', requires=IS_NOT_EMPTY()),\n\tField('body', 'text', requires=IS_NOT_EMPTY()),\n\tauth.signature)\n\ndb.define_table('blog_comment',\n\tField('blog_post', 'reference blog_post'),\n\tField('comments', 'text', requires=IS_NOT_EMPTY()),\n\tauth.signature\n\t)\ndb.blog_post.title.requires = IS_NOT_IN_DB(db, db.blog_post.title)\n\ndb.define_table('test',\n    Field('first_name', requires=[IS_NOT_EMPTY(), IS_ALPHANUMERIC()]),\n    Field('last_name', requires=[IS_NOT_EMPTY(), IS_ALPHANUMERIC()]),\n    Field('email', unique=True, requires=[IS_NOT_EMPTY(), IS_EMAIL()]),\n    Field('email_validate',requires=IS_EQUAL_TO(request.vars.email)))\ndb.test.email.requires=IS_NOT_IN_DB(db,'test.email')\n\n"
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__module__'
+p12
+S"'pymysql.err'"
+p13
+sS'__getslice__'
+p14
+S"<method-wrapper '__getslice__' of InternalError object>"
+p15
+sS'__str__'
+p16
+S"<method-wrapper '__str__' of InternalError object>"
+p17
+sS'__reduce__'
+p18
+S'<built-in method __reduce__ of InternalError object>'
+p19
+sS'__dict__'
+p20
+S'{}'
+p21
+sS'__sizeof__'
+p22
+S'<built-in method __sizeof__ of InternalError object>'
+p23
+sS'__weakref__'
+p24
+S'None'
+p25
+sS'__init__'
+p26
+S"<method-wrapper '__init__' of InternalError object>"
+p27
+sS'__setattr__'
+p28
+S"<method-wrapper '__setattr__' of InternalError object>"
+p29
+sS'__reduce_ex__'
+p30
+S'<built-in method __reduce_ex__ of InternalError object>'
+p31
+sS'__new__'
+p32
+S'<built-in method __new__ of type object>'
+p33
+sS'__format__'
+p34
+S'<built-in method __format__ of InternalError object>'
+p35
+sS'__class__'
+p36
+S"<class 'pymysql.err.InternalError'>"
+p37
+sS'__doc__'
+p38
+S"'Exception raised when the database encounters an...anymore, the transaction is\\n    out of sync, etc.'"
+p39
+sS'__getitem__'
+p40
+S"<method-wrapper '__getitem__' of InternalError object>"
+p41
+sS'__setstate__'
+p42
+S'<built-in method __setstate__ of InternalError object>'
+p43
+sS'__getattribute__'
+p44
+S"<method-wrapper '__getattribute__' of InternalError object>"
+p45
+sS'args'
+p46
+S"(1071, u'Specified key was too long; max key length is 767 bytes')"
+p47
+sS'__subclasshook__'
+p48
+S'<built-in method __subclasshook__ of type object>'
+p49
+sS'__unicode__'
+p50
+S'<built-in method __unicode__ of InternalError object>'
+p51
+sS'__delattr__'
+p52
+S"<method-wrapper '__delattr__' of InternalError object>"
+p53
+sS'__repr__'
+p54
+S"<method-wrapper '__repr__' of InternalError object>"
+p55
+sS'__hash__'
+p56
+S"<method-wrapper '__hash__' of InternalError object>"
+p57
+ssS'evalue'
+p58
+S"(1071, u'Specified key was too long; max key length is 767 bytes')"
+p59
+sS'request'
+p60
+cgluon.html
+XML_unpickle
+p61
+(S's\xefY\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">ajax</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">application</td><td style="vertical-align:top;">:</td><td><div>app2</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cid</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">controller</td><td style="vertical-align:top;">:</td><td><div>default</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">is_show_menu</td><td style="vertical-align:top;">:</td><td><div>1<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_admin</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-222c30ed-5de2-4fd3-bb36-1020eaa90c95<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_app2</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-7c47f3e0-57bb-4d74-990c-e53a614be334<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">env</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_ENCODING</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, sdch, br</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_LANGUAGE</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CACHE_CONTROL</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONNECTION</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_COOKIE</td><td style="vertical-align:top;">:</td><td><div>is_show_menu=1; session_id_admin=127.0.0.1-222c30ed-5de2-4fd3-bb36-1020eaa90c95; session_id_app2=127.0.0.1-7c47f3e0-57bb-4d74-990c-e53a614be334</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_HOST</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_UPGRADE_INSECURE_REQUESTS</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_USER_AGENT</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">PATH_INFO</td><td style="vertical-align:top;">:</td><td><div>/app2/default/test</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">QUERY_STRING</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_ADDR</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_PORT</td><td style="vertical-align:top;">:</td><td><div>42172</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_METHOD</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SCRIPT_NAME</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_NAME</td><td style="vertical-align:top;">:</td><td><div>PITSWS429</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PORT</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PROTOCOL</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_SOFTWARE</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/home/sanu/web2py/applications/app2/&#x27;, &#x27;/home/sanu/web2py/applications/admin/&#x27;, &#x27;/home/sanu/web2py/applications/welcome/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/home/sanu/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x7f09cf1ce3b0: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;PITSWS429&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;port&#x27;: 8000, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/home/sanu/web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;******&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/home/sanu/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_encoding</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, sdch, br</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_language</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cache_control</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_connection</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cookie</td><td style="vertical-align:top;">:</td><td><div>is_show_menu=1; session_id_admin=127.0.0.1-222c30ed-5de2-4fd3-bb36-1020eaa90c95; session_id_app2=127.0.0.1-7c47f3e0-57bb-4d74-990c-e53a614be334</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_host</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_upgrade_insecure_requests</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_user_agent</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>127.0.1.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>PITSWS429</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path_info</td><td style="vertical-align:top;">:</td><td><div>/app2/default/test</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">query_string</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_addr</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_port</td><td style="vertical-align:top;">:</td><td><div>42172</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_method</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_uri</td><td style="vertical-align:top;">:</td><td><div>/app2/default/test</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">script_name</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_name</td><td style="vertical-align:top;">:</td><td><div>PITSWS429</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_port</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_protocol</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_software</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_path</td><td style="vertical-align:top;">:</td><td><div>/home/sanu/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.14.6-stable+timestamp.2016.05.10.00.21.47</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x7f09dad991e0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x7f09cf1fa328&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x7f099ab8ff50&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x7f09dad991e0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x7f09cf1fa328&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x7f099ab8ff50&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">extension</td><td style="vertical-align:top;">:</td><td><div>html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">folder</td><td style="vertical-align:top;">:</td><td><div>/home/sanu/web2py/applications/app2/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">function</td><td style="vertical-align:top;">:</td><td><div>test</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">global_settings</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/home/sanu/web2py/applications/app2/&#x27;, &#x27;/home/sanu/web2py/applications/admin/&#x27;, &#x27;/home/sanu/web2py/applications/welcome/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/home/sanu/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x7f09cf1ce3b0: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;PITSWS429&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;port&#x27;: 8000, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/home/sanu/web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;******&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/home/sanu/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>127.0.1.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>PITSWS429</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.14.6-stable+timestamp.2016.05.10.00.21.47</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_https</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_local</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_restful</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_scheduler</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_shell</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">now</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 11, 1, 12, 43, 24, 320164)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_args</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_extension</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">url</td><td style="vertical-align:top;">:</td><td><div>/app2/default/test</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">utcnow</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 11, 1, 7, 13, 24, 320194)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi</td><td style="vertical-align:top;">:</td><td><div>&lt;gluon.main.LazyWSGI object at 0x7f099ad11710&gt;</div></td></tr></table></div>'
+tRp62
+sS'frames'
+p63
+(lp64
+(dp65
+S'file'
+p66
+S'/home/sanu/web2py/gluon/restricted.py'
+p67
+sS'dump'
+p68
+(dp69
+S'environment'
+p70
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'AppConfig': <function AppConfig>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, ...}"
+p71
+sS'ccode'
+p72
+S'<code object <module> at 0x7f099ab8fc30, file "/.../web2py/applications/app2/models/db1.py", line 2>'
+p73
+ssS'lnum'
+p74
+I227
+sS'lines'
+p75
+(dp76
+I224
+S'            ccode = code'
+p77
+sI225
+S'        else:'
+p78
+sI226
+S'            ccode = compile2(code, layer)'
+p79
+sI227
+S'        exec ccode in environment'
+p80
+sI228
+S'    except HTTP:'
+p81
+sI229
+S'        raise'
+p82
+sI230
+S'    except RestrictedError:'
+p83
+sI231
+S'        # do not encapsulate (obfuscate) the original RestrictedError'
+p84
+sI222
+S'    try:'
+p85
+sI223
+S'        if isinstance(code, types.CodeType):'
+p86
+ssS'call'
+p87
+S'(code="# auth.signature add default fields like the cre...st.email.requires=IS_NOT_IN_DB(db,\'test.email\')\\n\\n", environment={\'A\': <class \'gluon.html.A\'>, \'ANY_OF\': <class \'gluon.validators.ANY_OF\'>, \'ASSIGNJS\': <function ASSIGNJS>, \'AppConfig\': <function AppConfig>, \'Auth\': <class \'gluon.tools.Auth\'>, \'B\': <class \'gluon.html.B\'>, \'BEAUTIFY\': <class \'gluon.html.BEAUTIFY\'>, \'BODY\': <class \'gluon.html.BODY\'>, \'BR\': <class \'gluon.html.BR\'>, \'BUTTON\': <class \'gluon.html.BUTTON\'>, ...}, layer=\'/home/sanu/web2py/applications/app2/models/db1.py\')'
+p88
+sS'func'
+p89
+S'restricted'
+p90
+sa(dp91
+g66
+S'/home/sanu/web2py/applications/app2/models/db1.py'
+p92
+sg68
+(dp93
+S'IS_EQUAL_TO'
+p94
+S"<class 'gluon.validators.IS_EQUAL_TO'>"
+p95
+sS'request'
+p96
+S"<Storage {'_vars': <Storage {}>, 'function': 'te...folder': '/home/sanu/web2py/applications/app2/'}>"
+p97
+sS'Field'
+p98
+S"<class 'pydal.objects.Field'>"
+p99
+sS'request.vars'
+p100
+S'<Storage {}>'
+p101
+sS'request.vars.email'
+p102
+S'None'
+p103
+sS'requires'
+p104
+S'undefined'
+p105
+ssg74
+I18
+sg75
+(dp106
+I11
+S'\t)'
+p107
+sI12
+S'db.blog_post.title.requires = IS_NOT_IN_DB(db, db.blog_post.title)'
+p108
+sI13
+S''
+sI14
+S"db.define_table('test',"
+p109
+sI15
+S"    Field('first_name', requires=[IS_NOT_EMPTY(), IS_ALPHANUMERIC()]),"
+p110
+sI16
+S"    Field('last_name', requires=[IS_NOT_EMPTY(), IS_ALPHANUMERIC()]),"
+p111
+sI17
+S"    Field('email', unique=True, requires=[IS_NOT_EMPTY(), IS_EMAIL()]),"
+p112
+sI18
+S"    Field('email_validate',requires=IS_EQUAL_TO(request.vars.email)))"
+p113
+sI19
+S"db.test.email.requires=IS_NOT_IN_DB(db,'test.email')"
+p114
+sI20
+S''
+ssg87
+S'()'
+p115
+sg89
+S'<module>'
+p116
+sa(dp117
+g66
+S'/home/sanu/web2py/gluon/packages/dal/pydal/base.py'
+p118
+sg68
+(dp119
+S'fields'
+p120
+S'(<pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>)'
+p121
+sS'self'
+p122
+S'<DAL uri="mysql:******@localhost/app2_db">'
+p123
+sS'args'
+p124
+g21
+sS'tablename'
+p125
+S"'test'"
+p126
+sS'table'
+p127
+g105
+sS'self.lazy_define_table'
+p128
+S'<bound method DAL.lazy_define_table of <DAL uri="mysql:******@localhost/app2_db">>'
+p129
+ssg74
+I834
+sg75
+(dp130
+I832
+S'            table = None'
+p131
+sI833
+S'        else:'
+p132
+sI834
+S'            table = self.lazy_define_table(tablename,*fields,**args)'
+p133
+sI835
+S'        if not tablename in self.tables:'
+p134
+sI836
+S'            self.tables.append(tablename)'
+p135
+sI837
+S'        return table'
+p136
+sI838
+S''
+sI829
+S'                    % (tablename,invalid_args))'
+p137
+sI830
+S'        if self._lazy_tables and tablename not in self._LAZY_TABLES:'
+p138
+sI831
+S'            self._LAZY_TABLES[tablename] = (tablename,fields,args)'
+p139
+ssg87
+S'(self=<DAL uri="mysql:******@localhost/app2_db">, tablename=\'test\', *fields=(<pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>), **args={})'
+p140
+sg89
+S'define_table'
+p141
+sa(dp142
+g66
+S'/home/sanu/web2py/gluon/packages/dal/pydal/base.py'
+p143
+sg68
+(dp144
+S'polymodel'
+p145
+S'None'
+p146
+ssg74
+I873
+sg75
+(dp147
+I868
+S'            try:'
+p148
+sI869
+S'                GLOBAL_LOCKER.acquire()'
+p149
+sI870
+S'                self._lastsql = self._adapter.create_table('
+p150
+sI871
+S'                    table,migrate=migrate,'
+p151
+sI872
+S'                    fake_migrate=fake_migrate,'
+p152
+sI873
+S'                    polymodel=polymodel)'
+p153
+sI874
+S'            finally:'
+p154
+sI875
+S'                GLOBAL_LOCKER.release()'
+p155
+sI876
+S'        else:'
+p156
+sI877
+S'            table._dbt = None'
+p157
+ssg87
+S'(self=<DAL uri="mysql:******@localhost/app2_db">, tablename=\'test\', *fields=(<pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>), **args={})'
+p158
+sg89
+S'lazy_define_table'
+p159
+sa(dp160
+g66
+S'/home/sanu/web2py/gluon/packages/dal/pydal/adapters/base.py'
+p161
+sg68
+(dp162
+S'fake_migrate'
+p163
+S'False'
+p164
+ssg74
+I510
+sg75
+(dp165
+I512
+S'        return query'
+p166
+sI513
+S''
+sI514
+S'    def migrate_table('
+p167
+sI505
+S'            if sql_fields != sql_fields_old:'
+p168
+sI506
+S'                self.migrate_table('
+p169
+sI507
+S'                    table,'
+p170
+sI508
+S'                    sql_fields, sql_fields_old,'
+p171
+sI509
+S'                    sql_fields_aux, None,'
+p172
+sI510
+S'                    fake_migrate=fake_migrate'
+p173
+sI511
+S'                    )'
+p174
+ssg87
+S'(self=<pydal.adapters.mysql.MySQLAdapter object>, table=<Table test (id, first_name, last_name, email, email_validate)>, migrate=True, fake_migrate=False, polymodel=None)'
+p175
+sg89
+S'create_table'
+p176
+sa(dp177
+g66
+S'/home/sanu/web2py/gluon/packages/dal/pydal/adapters/base.py'
+p178
+sg68
+(dp179
+S'self'
+p180
+S'<pydal.adapters.mysql.MySQLAdapter object>'
+p181
+sS'self.execute'
+p182
+S'<bound method MySQLAdapter.execute of <pydal.adapters.mysql.MySQLAdapter object>>'
+p183
+sS'sub_query'
+p184
+S"'ALTER TABLE test ADD email VARCHAR(512) UNIQUE;'"
+p185
+ssg74
+I623
+sg75
+(dp186
+I618
+S'                    if fake_migrate:'
+p187
+sI619
+S'                        if db._adapter.commit_on_alter_table:'
+p188
+sI620
+S'                            self.save_dbt(table,sql_fields_current)'
+p189
+sI621
+S"                        self.log('faked!\\n', table)"
+p190
+sI622
+S'                    else:'
+p191
+sI623
+S'                        self.execute(sub_query)'
+p192
+sI624
+S'                        # Caveat: mysql, oracle and firebird'
+p193
+sI625
+S'                        # do not allow multiple alter table'
+p194
+sI626
+S'                        # in one transaction so we must commit'
+p195
+sI627
+S'                        # partial transactions and'
+p196
+ssg87
+S"(self=<pydal.adapters.mysql.MySQLAdapter object>, table=<Table test (id, first_name, last_name, email, email_validate)>, sql_fields={'email': {'length': 512, 'notnull': False, 'sortable': 4, 'sql': 'VARCHAR(512) UNIQUE', 'type': 'string', 'unique': True}, 'email_validate': {'length': 512, 'notnull': False, 'sortable': 5, 'sql': 'VARCHAR(512)', 'type': 'string', 'unique': False}, 'first_name': {'length': 512, 'notnull': False, 'sortable': 2, 'sql': 'VARCHAR(512)', 'type': 'string', 'unique': False}, 'id': {'length': 512, 'notnull': False, 'sortable': 1, 'sql': 'INT AUTO_INCREMENT NOT NULL', 'type': 'id', 'unique': False}, 'last_name': {'length': 512, 'notnull': False, 'sortable': 3, 'sql': 'VARCHAR(512)', 'type': 'string', 'unique': False}}, sql_fields_old={'first_name': {'length': 512, 'notnull': False, 'sortable': 2, 'sql': 'VARCHAR(512)', 'type': 'string', 'unique': False}, 'id': {'length': 512, 'notnull': False, 'sortable': 1, 'sql': 'INT AUTO_INCREMENT NOT NULL', 'type': 'id', 'unique': False}, 'last_name': {'length': 512, 'notnull': False, 'sortable': 3, 'sql': 'VARCHAR(512)', 'type': 'string', 'unique': False}}, sql_fields_aux={'email': {'sql': 'VARCHAR(512) UNIQUE'}, 'email_validate': {'sql': 'VARCHAR(512)'}, 'first_name': {'sql': 'VARCHAR(512)'}, 'id': {'sql': 'INT AUTO_INCREMENT NOT NULL'}, 'last_name': {'sql': 'VARCHAR(512)'}}, logfile=None, fake_migrate=False)"
+p197
+sg89
+S'migrate_table'
+p198
+sa(dp199
+g66
+S'/home/sanu/web2py/gluon/packages/dal/pydal/adapters/base.py'
+p200
+sg68
+(dp201
+S'a'
+S"('ALTER TABLE test ADD email VARCHAR(512) UNIQUE;',)"
+p202
+sS'self'
+p203
+S'<pydal.adapters.mysql.MySQLAdapter object>'
+p204
+sS'b'
+g21
+sS'self.log_execute'
+p205
+S'<bound method MySQLAdapter.log_execute of <pydal.adapters.mysql.MySQLAdapter object>>'
+p206
+ssg74
+I1388
+sg75
+(dp207
+I1383
+S'        self.db._timings.append((command,time.time()-t0))'
+p208
+sI1384
+S'        del self.db._timings[:-TIMINGSSIZE]'
+p209
+sI1385
+S'        return ret'
+p210
+sI1386
+S''
+sI1387
+S'    def execute(self, *a, **b):'
+p211
+sI1388
+S'        return self.log_execute(*a, **b)'
+p212
+sI1389
+S''
+sI1390
+S'    def execute_test_query(self):'
+p213
+sI1391
+S'        return self.execute(self.test_query)'
+p214
+sI1392
+S''
+ssg87
+S"(self=<pydal.adapters.mysql.MySQLAdapter object>, *a=('ALTER TABLE test ADD email VARCHAR(512) UNIQUE;',), **b={})"
+p215
+sg89
+S'execute'
+p216
+sa(dp217
+g66
+S'/home/sanu/web2py/gluon/packages/dal/pydal/adapters/base.py'
+p218
+sg68
+(dp219
+S'a'
+S"('ALTER TABLE test ADD email VARCHAR(512) UNIQUE;',)"
+p220
+sS'b'
+g21
+sS'self'
+p221
+S'<pydal.adapters.mysql.MySQLAdapter object>'
+p222
+sS'ret'
+p223
+g105
+sS'command'
+p224
+S"'ALTER TABLE test ADD email VARCHAR(512) UNIQUE;'"
+p225
+sS'self.get_cursor'
+p226
+S'<bound method MySQLAdapter.get_cursor of <pydal.adapters.mysql.MySQLAdapter object>>'
+p227
+sS').execute'
+p228
+g105
+ssg74
+I1382
+sg75
+(dp229
+I1377
+S'            command = self.filter_sql_command(command)'
+p230
+sI1378
+S'        if self.db._debug:'
+p231
+sI1379
+S"            self.db.logger.debug('SQL: %s' % command)"
+p232
+sI1380
+S'        self.db._lastsql = command'
+p233
+sI1381
+S'        t0 = time.time()'
+p234
+sI1382
+S'        ret = self.get_cursor().execute(command, *a[1:], **b)'
+p235
+sI1383
+S'        self.db._timings.append((command,time.time()-t0))'
+p236
+sI1384
+S'        del self.db._timings[:-TIMINGSSIZE]'
+p237
+sI1385
+S'        return ret'
+p238
+sI1386
+S''
+ssg87
+S"(self=<pydal.adapters.mysql.MySQLAdapter object>, *a=('ALTER TABLE test ADD email VARCHAR(512) UNIQUE;',), **b={})"
+p239
+sg89
+S'log_execute'
+p240
+sa(dp241
+g66
+S'/usr/local/lib/python2.7/dist-packages/pymysql/cursors.py'
+p242
+sg68
+(dp243
+S'query'
+p244
+S"'ALTER TABLE test ADD email VARCHAR(512) UNIQUE;'"
+p245
+sS'self'
+p246
+S'<pymysql.cursors.Cursor object>'
+p247
+sS'result'
+p248
+g105
+sS'self._query'
+p249
+S'<bound method Cursor._query of <pymysql.cursors.Cursor object>>'
+p250
+ssg74
+I166
+sg75
+(dp251
+I161
+S'        while self.nextset():'
+p252
+sI162
+S'            pass'
+p253
+sI163
+S''
+sI164
+S'        query = self.mogrify(query, args)'
+p254
+sI165
+S''
+sI166
+S'        result = self._query(query)'
+p255
+sI167
+S'        self._executed = query'
+p256
+sI168
+S'        return result'
+p257
+sI169
+S''
+sI170
+S'    def executemany(self, query, args):'
+p258
+ssg87
+S"(self=<pymysql.cursors.Cursor object>, query='ALTER TABLE test ADD email VARCHAR(512) UNIQUE;', args=None)"
+p259
+sg89
+g216
+sa(dp260
+g66
+S'/usr/local/lib/python2.7/dist-packages/pymysql/cursors.py'
+p261
+sg68
+(dp262
+S'q'
+S"'ALTER TABLE test ADD email VARCHAR(512) UNIQUE;'"
+p263
+sS'conn.query'
+p264
+S'<bound method Connection.query of <pymysql.connections.Connection object>>'
+p265
+sS'conn'
+p266
+S'<pymysql.connections.Connection object>'
+p267
+ssg74
+I322
+sg75
+(dp268
+I320
+S'        conn = self._get_db()'
+p269
+sI321
+S'        self._last_executed = q'
+p270
+sI322
+S'        conn.query(q)'
+p271
+sI323
+S'        self._do_get_result()'
+p272
+sI324
+S'        return self.rowcount'
+p273
+sI325
+S''
+sI326
+S'    def _do_get_result(self):'
+p274
+sI317
+S'        self.rownumber = r'
+p275
+sI318
+S''
+sI319
+S'    def _query(self, q):'
+p276
+ssg87
+S"(self=<pymysql.cursors.Cursor object>, q='ALTER TABLE test ADD email VARCHAR(512) UNIQUE;')"
+p277
+sg89
+S'_query'
+p278
+sa(dp279
+g66
+S'/usr/local/lib/python2.7/dist-packages/pymysql/connections.py'
+p280
+sg68
+(dp281
+S'self._read_query_result'
+p282
+S'<bound method Connection._read_query_result of <pymysql.connections.Connection object>>'
+p283
+sS'self'
+p284
+S'<pymysql.connections.Connection object>'
+p285
+sS'unbuffered'
+p286
+g164
+sS'self._affected_rows'
+p287
+S'0'
+ssg74
+I835
+sg75
+(dp288
+I832
+S'            else:'
+p289
+sI833
+S"                sql = sql.encode(self.encoding, 'surrogateescape')"
+p290
+sI834
+S'        self._execute_command(COMMAND.COM_QUERY, sql)'
+p291
+sI835
+S'        self._affected_rows = self._read_query_result(unbuffered=unbuffered)'
+p292
+sI836
+S'        return self._affected_rows'
+p293
+sI837
+S''
+sI838
+S'    def next_result(self, unbuffered=False):'
+p294
+sI839
+S'        self._affected_rows = self._read_query_result(unbuffered=unbuffered)'
+p295
+sI830
+S'            if PY2:'
+p296
+sI831
+S'                sql = sql.encode(self.encoding)'
+p297
+ssg87
+S"(self=<pymysql.connections.Connection object>, sql='ALTER TABLE test ADD email VARCHAR(512) UNIQUE;', unbuffered=False)"
+p298
+sg89
+S'query'
+p299
+sa(dp300
+g66
+S'/usr/local/lib/python2.7/dist-packages/pymysql/connections.py'
+p301
+sg68
+(dp302
+S'result.read'
+p303
+S'<bound method MySQLResult.read of <pymysql.connections.MySQLResult object>>'
+p304
+sS'result'
+p305
+S'<pymysql.connections.MySQLResult object>'
+p306
+ssg74
+I1019
+sg75
+(dp307
+I1014
+S'                result.unbuffered_active = False'
+p308
+sI1015
+S'                result.connection = None'
+p309
+sI1016
+S'                raise'
+p310
+sI1017
+S'        else:'
+p311
+sI1018
+S'            result = MySQLResult(self)'
+p312
+sI1019
+S'            result.read()'
+p313
+sI1020
+S'        self._result = result'
+p314
+sI1021
+S'        if result.server_status is not None:'
+p315
+sI1022
+S'            self.server_status = result.server_status'
+p316
+sI1023
+S'        return result.affected_rows'
+p317
+ssg87
+S'(self=<pymysql.connections.Connection object>, unbuffered=False)'
+p318
+sg89
+S'_read_query_result'
+p319
+sa(dp320
+g66
+S'/usr/local/lib/python2.7/dist-packages/pymysql/connections.py'
+p321
+sg68
+(dp322
+S'first_packet'
+p323
+g105
+sS'self'
+p324
+S'<pymysql.connections.MySQLResult object>'
+p325
+sS'self.connection'
+p326
+S'None'
+p327
+sS'self.connection._read_packet'
+p328
+g105
+ssg74
+I1302
+sg75
+(dp329
+I1297
+S'        if self.unbuffered_active:'
+p330
+sI1298
+S'            self._finish_unbuffered_query()'
+p331
+sI1299
+S''
+sI1300
+S'    def read(self):'
+p332
+sI1301
+S'        try:'
+p333
+sI1302
+S'            first_packet = self.connection._read_packet()'
+p334
+sI1303
+S''
+sI1304
+S'            if first_packet.is_ok_packet():'
+p335
+sI1305
+S'                self._read_ok_packet(first_packet)'
+p336
+sI1306
+S'            elif first_packet.is_load_local_packet():'
+p337
+ssg87
+S'(self=<pymysql.connections.MySQLResult object>)'
+p338
+sg89
+S'read'
+p339
+sa(dp340
+g66
+S'/usr/local/lib/python2.7/dist-packages/pymysql/connections.py'
+p341
+sg68
+(dp342
+S'packet'
+p343
+S'<pymysql.connections.MysqlPacket object>'
+p344
+sS'packet.check_error'
+p345
+S'<bound method MysqlPacket.check_error of <pymysql.connections.MysqlPacket object>>'
+p346
+ssg74
+I981
+sg75
+(dp347
+I976
+S'                continue'
+p348
+sI977
+S'            if bytes_to_read < MAX_PACKET_LEN:'
+p349
+sI978
+S'                break'
+p350
+sI979
+S''
+sI980
+S'        packet = packet_type(buff, self.encoding)'
+p351
+sI981
+S'        packet.check_error()'
+p352
+sI982
+S'        return packet'
+p353
+sI983
+S''
+sI984
+S'    def _read_bytes(self, num_bytes):'
+p354
+sI985
+S'        self._sock.settimeout(self._read_timeout)'
+p355
+ssg87
+S"(self=<pymysql.connections.Connection object>, packet_type=<class 'pymysql.connections.MysqlPacket'>)"
+p356
+sg89
+S'_read_packet'
+p357
+sa(dp358
+g66
+S'/usr/local/lib/python2.7/dist-packages/pymysql/connections.py'
+p359
+sg68
+(dp360
+S'self._data'
+p361
+S"'\\xff/\\x04#42000Specified key was too long; max key length is 767 bytes'"
+p362
+sS'self'
+p363
+S'<pymysql.connections.MysqlPacket object>'
+p364
+sS'global err'
+p365
+S"<module 'pymysql.err' from '/usr/local/lib/python2.7/dist-packages/pymysql/err.pyc'>"
+p366
+sS'err.raise_mysql_exception'
+p367
+S'<function raise_mysql_exception>'
+p368
+ssg74
+I393
+sg75
+(dp369
+I388
+S'        if self.is_error_packet():'
+p370
+sI389
+S'            self.rewind()'
+p371
+sI390
+S'            self.advance(1)  # field_count == error (we already know that)'
+p372
+sI391
+S'            errno = self.read_uint16()'
+p373
+sI392
+S'            if DEBUG: print("errno =", errno)'
+p374
+sI393
+S'            err.raise_mysql_exception(self._data)'
+p375
+sI394
+S''
+sI395
+S'    def dump(self):'
+p376
+sI396
+S'        dump_packet(self._data)'
+p377
+sI397
+S''
+ssg87
+S'(self=<pymysql.connections.MysqlPacket object>)'
+p378
+sg89
+S'check_error'
+p379
+sa(dp380
+g66
+S'/usr/local/lib/python2.7/dist-packages/pymysql/err.py'
+p381
+sg68
+(dp382
+S'errorclass'
+p383
+S"<class 'pymysql.err.InternalError'>"
+p384
+sS'errno'
+p385
+S'1071'
+p386
+sS'errval'
+p387
+S"u'Specified key was too long; max key length is 767 bytes'"
+p388
+ssg74
+I107
+sg75
+(dp389
+I98
+S'def raise_mysql_exception(data):'
+p390
+sI99
+S"    errno = struct.unpack('<h', data[1:3])[0]"
+p391
+sI100
+S'    is_41 = data[3:4] == b"#"'
+p392
+sI101
+S'    if is_41:'
+p393
+sI102
+S'        # client protocol 4.1'
+p394
+sI103
+S"        errval = data[9:].decode('utf-8', 'replace')"
+p395
+sI104
+S'    else:'
+p396
+sI105
+S"        errval = data[3:].decode('utf-8', 'replace')"
+p397
+sI106
+S'    errorclass = error_map.get(errno, InternalError)'
+p398
+sI107
+S'    raise errorclass(errno, errval)'
+p399
+ssg87
+S"(data='\\xff/\\x04#42000Specified key was too long; max key length is 767 bytes')"
+p400
+sg89
+S'raise_mysql_exception'
+p401
+sasS'pyver'
+p402
+S'Python 2.7.6: /usr/bin/python (prefix: /usr)'
+p403
+sS'session'
+p404
+g61
+(S'sb\t\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">auth</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">expiration</td><td style="vertical-align:top;">:</td><td><div>3600</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">hmac_key</td><td style="vertical-align:top;">:</td><td><div>873e0899-0f94-49f9-811c-ec92f0be5b83</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">last_visit</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 11, 1, 12, 42, 44, 902567)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remember_me</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">user</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">email</td><td style="vertical-align:top;">:</td><td><div>sanu@gmail.com</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">first_name</td><td style="vertical-align:top;">:</td><td><div>sanu</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">id</td><td style="vertical-align:top;">:</td><td><div>1L</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">last_name</td><td style="vertical-align:top;">:</td><td><div>m</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">registration_id</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">registration_key</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">reset_password_key</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">user_groups</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">1</td><td style="vertical-align:top;">:</td><td><div>user_1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">2</td><td style="vertical-align:top;">:</td><td><div>managers</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr></table></div>'
+tRp405
+sS'etype'
+p406
+S"<class 'pymysql.err.InternalError'>"
+p407
+sS'date'
+p408
+S'Tue Nov  1 12:43:24 2016'
+p409
+sS'response'
+p410
+g61
+(S'sL\x17\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">body</td><td style="vertical-align:top;">:</td><td><div>&lt;cStringIO.StringO object at 0x7f09bc3b4dc0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_app2</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-7c47f3e0-57bb-4d74-990c-e53a614be334<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">delimiters</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>{{</div></td></tr><tr><td><div>}}</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">files</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">form_label_separator</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">formstyle</td><td style="vertical-align:top;">:</td><td><div>bootstrap3_inline</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generic_patterns</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>*</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">headers</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">X-Powered-By</td><td style="vertical-align:top;">:</td><td><div>web2py</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">meta</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">models_to_run</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>^\\w+\\.py$</div></td></tr><tr><td><div>^default/\\w+\\.py$</div></td></tr><tr><td><div>^default/test/\\w+\\.py$</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">postprocessing</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_compression_level</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_expires</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_data_name</td><td style="vertical-align:top;">:</td><td><div>session_data_app2</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_file</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;/home/sanu/web2py/applications/app2/sessions/10c/1c0/127.0.0.1-7c47f3e0-57bb-4d74-990c-e53a614be334&#x27;, mode &#x27;rb+&#x27; at 0x7f09bc146f60&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_filename</td><td style="vertical-align:top;">:</td><td><div>/home/sanu/web2py/applications/app2/sessions/127.0.0.1-7c47f3e0-57bb-4d74-990c-e53a614be334</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_hash</td><td style="vertical-align:top;">:</td><td><div>3cf6a52415e6ad1482565c8ed7706771</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-7c47f3e0-57bb-4d74-990c-e53a614be334</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_name</td><td style="vertical-align:top;">:</td><td><div>session_id_app2</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_locked</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_masterapp</td><td style="vertical-align:top;">:</td><td><div>app2</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_new</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_storage_type</td><td style="vertical-align:top;">:</td><td><div>file</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">status</td><td style="vertical-align:top;">:</td><td><div>200</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">view</td><td style="vertical-align:top;">:</td><td><div>default/test.html</div></td></tr></table></div>'
+tRp411
+sS'locals'
+p412
+(dp413
+S'errorclass'
+p414
+S"<class 'pymysql.err.InternalError'>"
+p415
+sS'errno'
+p416
+S'1071'
+p417
+sS'is_41'
+p418
+S'True'
+p419
+sS'errval'
+p420
+S"u'Specified key was too long; max key length is 767 bytes'"
+p421
+sS'data'
+p422
+S"'\\xff/\\x04#42000Specified key was too long; max key length is 767 bytes'"
+p423
+sssS'traceback'
+p424
+S'Traceback (most recent call last):\n  File "/home/sanu/web2py/gluon/restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "/home/sanu/web2py/applications/app2/models/db1.py", line 18, in <module>\n    Field(\'email_validate\',requires=IS_EQUAL_TO(request.vars.email)))\n  File "/home/sanu/web2py/gluon/packages/dal/pydal/base.py", line 834, in define_table\n    table = self.lazy_define_table(tablename,*fields,**args)\n  File "/home/sanu/web2py/gluon/packages/dal/pydal/base.py", line 873, in lazy_define_table\n    polymodel=polymodel)\n  File "/home/sanu/web2py/gluon/packages/dal/pydal/adapters/base.py", line 510, in create_table\n    fake_migrate=fake_migrate\n  File "/home/sanu/web2py/gluon/packages/dal/pydal/adapters/base.py", line 623, in migrate_table\n    self.execute(sub_query)\n  File "/home/sanu/web2py/gluon/packages/dal/pydal/adapters/base.py", line 1388, in execute\n    return self.log_execute(*a, **b)\n  File "/home/sanu/web2py/gluon/packages/dal/pydal/adapters/base.py", line 1382, in log_execute\n    ret = self.get_cursor().execute(command, *a[1:], **b)\n  File "/usr/local/lib/python2.7/dist-packages/pymysql/cursors.py", line 166, in execute\n    result = self._query(query)\n  File "/usr/local/lib/python2.7/dist-packages/pymysql/cursors.py", line 322, in _query\n    conn.query(q)\n  File "/usr/local/lib/python2.7/dist-packages/pymysql/connections.py", line 835, in query\n    self._affected_rows = self._read_query_result(unbuffered=unbuffered)\n  File "/usr/local/lib/python2.7/dist-packages/pymysql/connections.py", line 1019, in _read_query_result\n    result.read()\n  File "/usr/local/lib/python2.7/dist-packages/pymysql/connections.py", line 1302, in read\n    first_packet = self.connection._read_packet()\n  File "/usr/local/lib/python2.7/dist-packages/pymysql/connections.py", line 981, in _read_packet\n    packet.check_error()\n  File "/usr/local/lib/python2.7/dist-packages/pymysql/connections.py", line 393, in check_error\n    err.raise_mysql_exception(self._data)\n  File "/usr/local/lib/python2.7/dist-packages/pymysql/err.py", line 107, in raise_mysql_exception\n    raise errorclass(errno, errval)\nInternalError: (1071, u\'Specified key was too long; max key length is 767 bytes\')\n'
+p425
+s.

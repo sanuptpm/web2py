@@ -1,0 +1,642 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.AttributeError'> 'Rows' object has no attribute 'split'"
+p3
+sS'layer'
+p4
+S'/home/sanu/web2py/applications/app2/controllers/default.py'
+p5
+sS'code'
+p6
+S'# -*- coding: utf-8 -*-\n# this file is released under public domain and you can use without limitations\n\n# -------------------------------------------------------------------------\n# This is a sample controller\n# - index is the default action of any application\n# - user is required for authentication and authorization\n# - download is for downloading files uploaded in the db (does streaming)\n# -------------------------------------------------------------------------\n\nfrom reportlab.platypus import *\nfrom reportlab.lib.styles import getSampleStyleSheet\nfrom reportlab.rl_config import defaultPageSize\nfrom reportlab.lib.units import inch, mm\nfrom reportlab.lib.enums import TA_LEFT, TA_RIGHT, TA_CENTER, TA_JUSTIFY\nfrom reportlab.lib import colors\nfrom uuid import uuid4\nfrom cgi import escape\nimport os\n\nimport cStringIO\n \nfrom reportlab.platypus.doctemplate import SimpleDocTemplate\nfrom reportlab.platypus import Paragraph, Spacer\nfrom reportlab.lib.styles import getSampleStyleSheet\nfrom reportlab.lib.units import inch\n\ndef generatepdf():\n    rows = db(db.blog_post).select(orderby=db.blog_post.title.upper())\n    styles = getSampleStyleSheet()\n    story = [\n        Paragraph("Hello World", styles[\'Heading1\']),\n        Paragraph("The quick brown fox", styles[\'Normal\']),\n        Spacer(1, 0.25*inch),\n        Paragraph("First PDF Doc.", styles[\'Normal\']),\n        Paragraph(rows, styles[\'Normal\'])]\n    buffer = cStringIO.StringIO()   \n    doc = SimpleDocTemplate(buffer)\n    doc.build(story)\n    pdf = buffer.getvalue()\n    buffer.close()\n   \n    filename = request.args(0)\n    if filename:\n        header = {\'Content-Disposition\': \'attachment; filename=\' + filename}\n    else:\n        header = {\'Content-Type\': \'application/pdf\'}\n    response.headers.update(header)\n    return pdf\n\n\ndef index():  \n    rows = db(db.blog_post).select(orderby=db.blog_post.title.upper())\n    return locals()\n\n\n@auth.requires_login()    \ndef create():\n    form = SQLFORM(db.blog_post).process()\n    if form.accepted:\n        session.flash = "Blog is Posted"\n        redirect(URL(\'index\'))\n    return locals()\n\n@auth.requires_login()\ndef show():\n    post = db.blog_post(request.args(0, cast=int))\n    db.blog_comment.blog_post.default = post.id\n    db.blog_comment.blog_post.readable = False\n    db.blog_comment.blog_post.writable = False\n    form = SQLFORM(db.blog_comment).process()\n    comments = db(db.blog_comment.blog_post==post.id).select()\n    return locals()\n\n@auth.requires_membership(\'managers\')\ndef manage():\n    grid = SQLFORM.grid(db.blog_post)\n    return locals()\n\ndef user():\n    """\n    exposes:\n    http://..../[app]/default/user/login\n    http://..../[app]/default/user/logout\n    http://..../[app]/default/user/register\n    http://..../[app]/default/user/profile\n    http://..../[app]/default/user/retrieve_password\n    http://..../[app]/default/user/change_password\n    http://..../[app]/default/user/bulk_register\n    use @auth.requires_login()\n        @auth.requires_membership(\'group name\')\n        @auth.requires_permission(\'read\',\'table name\',record_id)\n    to decorate functions that need access control\n    also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users\n    """\n    return dict(form=auth())\n\n\n@cache.action()\ndef download():\n    """\n    allows downloading of uploaded files\n    http://..../[app]/default/download/[filename]\n    """\n    return response.download(request, db)\n\n\ndef call():\n    """\n    exposes services. for example:\n    http://..../[app]/default/call/jsonrpc\n    decorate with @services.jsonrpc the functions to expose\n    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv\n    """\n    return service()\n\ndef test():\n    form = SQLFORM(db.test).process()\n    if form.accepted:\n        session.flash = "Blog is Posted"\n        redirect(URL(\'index\'))\n    return locals()\n\n\n@request.restful()\ndef api():\n    response.view = \'generic.\'+request.extension\n    def GET(*args,**vars):\n        patterns = \'auto\'\n        parser = db.parse_as_rest(patterns,args,vars)\n        if parser.status == 200:\n            return dict(content=parser.response)\n        else:\n            raise HTTP(parser.status,parser.error)\n    def POST(table_name,**vars):\n        return db[table_name].validate_and_insert(**vars)\n    def PUT(table_name,record_id,**vars):\n        return db(db[table_name]._id==record_id).update(**vars)\n    def DELETE(table_name,record_id):\n        return db(db[table_name]._id==record_id).delete()\n    return dict(GET=GET, POST=POST, PUT=PUT, DELETE=DELETE)\n\n\n\nresponse._vars=response._caller(generatepdf)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__hash__'
+p12
+S"<method-wrapper '__hash__' of exceptions.AttributeError object>"
+p13
+sS'__setattr__'
+p14
+S"<method-wrapper '__setattr__' of exceptions.AttributeError object>"
+p15
+sS'__reduce_ex__'
+p16
+S'<built-in method __reduce_ex__ of exceptions.AttributeError object>'
+p17
+sS'__getslice__'
+p18
+S"<method-wrapper '__getslice__' of exceptions.AttributeError object>"
+p19
+sS'__getitem__'
+p20
+S"<method-wrapper '__getitem__' of exceptions.AttributeError object>"
+p21
+sS'__setstate__'
+p22
+S'<built-in method __setstate__ of exceptions.AttributeError object>'
+p23
+sS'args'
+p24
+S'("\'Rows\' object has no attribute \'split\'",)'
+p25
+sS'__reduce__'
+p26
+S'<built-in method __reduce__ of exceptions.AttributeError object>'
+p27
+sS'__str__'
+p28
+S"<method-wrapper '__str__' of exceptions.AttributeError object>"
+p29
+sS'__format__'
+p30
+S'<built-in method __format__ of exceptions.AttributeError object>'
+p31
+sS'__getattribute__'
+p32
+S"<method-wrapper '__getattribute__' of exceptions.AttributeError object>"
+p33
+sS'__class__'
+p34
+S"<type 'exceptions.AttributeError'>"
+p35
+sS'__unicode__'
+p36
+S'<built-in method __unicode__ of exceptions.AttributeError object>'
+p37
+sS'__delattr__'
+p38
+S"<method-wrapper '__delattr__' of exceptions.AttributeError object>"
+p39
+sS'__subclasshook__'
+p40
+S'<built-in method __subclasshook__ of type object>'
+p41
+sS'__repr__'
+p42
+S"<method-wrapper '__repr__' of exceptions.AttributeError object>"
+p43
+sS'__dict__'
+p44
+S'{}'
+p45
+sS'__sizeof__'
+p46
+S'<built-in method __sizeof__ of exceptions.AttributeError object>'
+p47
+sS'__doc__'
+p48
+S"'Attribute not found.'"
+p49
+sS'__init__'
+p50
+S"<method-wrapper '__init__' of exceptions.AttributeError object>"
+p51
+sS'__new__'
+p52
+S'<built-in method __new__ of type object>'
+p53
+ssS'evalue'
+p54
+S"'Rows' object has no attribute 'split'"
+p55
+sS'request'
+p56
+cgluon.html
+XML_unpickle
+p57
+(S's\xf9^\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">ajax</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">application</td><td style="vertical-align:top;">:</td><td><div>app2</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cid</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">controller</td><td style="vertical-align:top;">:</td><td><div>default</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">is_show_menu</td><td style="vertical-align:top;">:</td><td><div>1<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_admin</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-17cfd936-3d02-4424-9ae3-a0809e026e4e<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_app2</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-84e6ee1c-ab5f-4639-839e-d73d2e22a0e4<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_welcome</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-51369e79-82a4-4399-8723-33bb01ffd347<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">env</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_ENCODING</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, sdch, br</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_LANGUAGE</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CACHE_CONTROL</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONNECTION</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_COOKIE</td><td style="vertical-align:top;">:</td><td><div>is_show_menu=1; session_id_admin=127.0.0.1-17cfd936-3d02-4424-9ae3-a0809e026e4e; session_id_welcome=127.0.0.1-51369e79-82a4-4399-8723-33bb01ffd347; session_id_app2=127.0.0.1-84e6ee1c-ab5f-4639-839e-d73d2e22a0e4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_HOST</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_UPGRADE_INSECURE_REQUESTS</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_USER_AGENT</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.90 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">PATH_INFO</td><td style="vertical-align:top;">:</td><td><div>/app2/default/generatepdf</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">QUERY_STRING</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_ADDR</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_PORT</td><td style="vertical-align:top;">:</td><td><div>42564</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_METHOD</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SCRIPT_NAME</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_NAME</td><td style="vertical-align:top;">:</td><td><div>PITSWS429</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PORT</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PROTOCOL</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_SOFTWARE</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/home/sanu/web2py/applications/app2/&#x27;, &#x27;/home/sanu/web2py/applications/welcome/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/home/sanu/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x7fb58f8573b0: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;PITSWS429&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;port&#x27;: 8000, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/home/sanu/web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;******&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/home/sanu/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_encoding</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, sdch, br</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_language</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cache_control</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_connection</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cookie</td><td style="vertical-align:top;">:</td><td><div>is_show_menu=1; session_id_admin=127.0.0.1-17cfd936-3d02-4424-9ae3-a0809e026e4e; session_id_welcome=127.0.0.1-51369e79-82a4-4399-8723-33bb01ffd347; session_id_app2=127.0.0.1-84e6ee1c-ab5f-4639-839e-d73d2e22a0e4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_host</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_upgrade_insecure_requests</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_user_agent</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.90 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>127.0.1.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>PITSWS429</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path_info</td><td style="vertical-align:top;">:</td><td><div>/app2/default/generatepdf</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">query_string</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_addr</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_port</td><td style="vertical-align:top;">:</td><td><div>42564</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_method</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_uri</td><td style="vertical-align:top;">:</td><td><div>/app2/default/generatepdf</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">script_name</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_name</td><td style="vertical-align:top;">:</td><td><div>PITSWS429</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_port</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_protocol</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_software</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_path</td><td style="vertical-align:top;">:</td><td><div>/home/sanu/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.14.6-stable+timestamp.2016.05.10.00.21.47</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x7fb59b4241e0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x7fb58f883328&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x7fb58c043250&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x7fb59b4241e0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x7fb58f883328&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x7fb58c043250&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">extension</td><td style="vertical-align:top;">:</td><td><div>html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">folder</td><td style="vertical-align:top;">:</td><td><div>/home/sanu/web2py/applications/app2/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">function</td><td style="vertical-align:top;">:</td><td><div>generatepdf</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">global_settings</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/home/sanu/web2py/applications/app2/&#x27;, &#x27;/home/sanu/web2py/applications/welcome/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/home/sanu/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x7fb58f8573b0: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;PITSWS429&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;port&#x27;: 8000, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/home/sanu/web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;******&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/home/sanu/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>127.0.1.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>PITSWS429</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.14.6-stable+timestamp.2016.05.10.00.21.47</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_https</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_local</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_restful</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_scheduler</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_shell</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">now</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 11, 15, 16, 44, 16, 114648)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_args</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_extension</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">url</td><td style="vertical-align:top;">:</td><td><div>/app2/default/generatepdf</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">utcnow</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 11, 15, 11, 14, 16, 114683)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi</td><td style="vertical-align:top;">:</td><td><div>&lt;gluon.main.LazyWSGI object at 0x7fb5990cd5d0&gt;</div></td></tr></table></div>'
+tRp58
+sS'frames'
+p59
+(lp60
+(dp61
+S'file'
+p62
+S'/home/sanu/web2py/gluon/restricted.py'
+p63
+sS'dump'
+p64
+(dp65
+S'environment'
+p66
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'ActionFlowable': <class reportlab.platypus.doctemplate.ActionFlowable>, 'AppConfig': <function AppConfig>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, ...}"
+p67
+sS'ccode'
+p68
+S'<code object <module> at 0x7fb5562fb730, file "/...plications/app2/controllers/default.py", line 11>'
+p69
+ssS'lnum'
+p70
+I227
+sS'lines'
+p71
+(dp72
+I224
+S'            ccode = code'
+p73
+sI225
+S'        else:'
+p74
+sI226
+S'            ccode = compile2(code, layer)'
+p75
+sI227
+S'        exec ccode in environment'
+p76
+sI228
+S'    except HTTP:'
+p77
+sI229
+S'        raise'
+p78
+sI230
+S'    except RestrictedError:'
+p79
+sI231
+S'        # do not encapsulate (obfuscate) the original RestrictedError'
+p80
+sI222
+S'    try:'
+p81
+sI223
+S'        if isinstance(code, types.CodeType):'
+p82
+ssS'call'
+p83
+S"(code='# -*- coding: utf-8 -*-\\n# this file is released ...\\n\\n\\n\\nresponse._vars=response._caller(generatepdf)\\n', environment={'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'ActionFlowable': <class reportlab.platypus.doctemplate.ActionFlowable>, 'AppConfig': <function AppConfig>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, ...}, layer='/home/sanu/web2py/applications/app2/controllers/default.py')"
+p84
+sS'func'
+p85
+S'restricted'
+p86
+sa(dp87
+g62
+S'/home/sanu/web2py/applications/app2/controllers/default.py'
+p88
+sg64
+(dp89
+sg70
+I145
+sg71
+(dp90
+I134
+S'            raise HTTP(parser.status,parser.error)'
+p91
+sI135
+S'    def POST(table_name,**vars):'
+p92
+sI136
+S'        return db[table_name].validate_and_insert(**vars)'
+p93
+sI137
+S'    def PUT(table_name,record_id,**vars):'
+p94
+sI138
+S'        return db(db[table_name]._id==record_id).update(**vars)'
+p95
+sI139
+S'    def DELETE(table_name,record_id):'
+p96
+sI140
+S'        return db(db[table_name]._id==record_id).delete()'
+p97
+sI141
+S'    return dict(GET=GET, POST=POST, PUT=PUT, DELETE=DELETE)'
+p98
+sI142
+S''
+sI143
+S''
+ssg83
+S'()'
+p99
+sg85
+S'<module>'
+p100
+sa(dp101
+g62
+S'/home/sanu/web2py/gluon/globals.py'
+p102
+sg64
+(dp103
+S'self'
+p104
+S'undefined'
+p105
+sS'f'
+S'<function generatepdf>'
+p106
+ssg70
+I417
+sg71
+(dp107
+I416
+S'        self._vars = None'
+p108
+sI417
+S'        self._caller = lambda f: f()'
+p109
+sI418
+S'        self._view_environment = None'
+p110
+sI419
+S'        self._custom_commit = None'
+p111
+sI420
+S'        self._custom_rollback = None'
+p112
+sI421
+S"        self.generic_patterns = ['*']"
+p113
+sI412
+S"        self.flash = ''            # used by the default view layout"
+p114
+sI413
+S'        self.meta = Storage()      # used by web2py_ajax.html'
+p115
+sI414
+S'        self.menu = []             # used by the default view layout'
+p116
+sI415
+S'        self.files = []            # used by web2py_ajax.html'
+p117
+ssg83
+S'(f=<function generatepdf>)'
+p118
+sg85
+S'<lambda>'
+p119
+sa(dp120
+g62
+S'/home/sanu/web2py/applications/app2/controllers/default.py'
+p121
+sg64
+(dp122
+S'styles'
+p123
+S'<reportlab.lib.styles.StyleSheet1 instance>'
+p124
+sS'rows'
+p125
+S'<Rows (2)>'
+p126
+sS'global Paragraph'
+p127
+S'<class reportlab.platypus.paragraph.Paragraph>'
+p128
+ssg70
+I36
+sg71
+(dp129
+I32
+S'        Paragraph("Hello World", styles[\'Heading1\']),'
+p130
+sI33
+S'        Paragraph("The quick brown fox", styles[\'Normal\']),'
+p131
+sI34
+S'        Spacer(1, 0.25*inch),'
+p132
+sI35
+S'        Paragraph("First PDF Doc.", styles[\'Normal\']),'
+p133
+sI36
+S"        Paragraph(rows, styles['Normal'])]"
+p134
+sI37
+S'    buffer = cStringIO.StringIO()'
+p135
+sI38
+S'    doc = SimpleDocTemplate(buffer)'
+p136
+sI39
+S'    doc.build(story)'
+p137
+sI40
+S'    pdf = buffer.getvalue()'
+p138
+sI31
+S'    story = ['
+p139
+ssg83
+S'()'
+p140
+sg85
+S'generatepdf'
+p141
+sa(dp142
+g62
+S'/usr/lib/python2.7/dist-packages/reportlab/platypus/paragraph.py'
+p143
+sg64
+(dp144
+S'builtinNone'
+p145
+S'None'
+p146
+sS'style'
+p147
+S"<ParagraphStyle 'Normal'>"
+p148
+sS'bulletText'
+p149
+S'None'
+p150
+sS'text'
+p151
+S'<Rows (2)>'
+p152
+sS'self'
+p153
+S"Paragraph(\n'caseSensitive': 1\n'encoding': 'utf8'\n) #Paragraph"
+p154
+sS'self._setup'
+p155
+S"<bound method Paragraph._setup of Paragraph(\n'caseSensitive': 1\n'encoding': 'utf8'\n) #Paragraph>"
+p156
+sS'frags'
+p157
+S'None'
+p158
+sS'builtingetattr'
+p159
+S'<built-in function getattr>'
+p160
+sS'global cleanBlockQuotedText'
+p161
+S'<function cleanBlockQuotedText>'
+p162
+ssg70
+I988
+sg71
+(dp163
+I992
+S'        n = self.__class__.__name__'
+p164
+sI983
+S'        It will also be able to handle any MathML specified Greek characters.'
+p165
+sI984
+S'    """'
+p166
+sI985
+S"    def __init__(self, text, style, bulletText = None, frags=None, caseSensitive=1, encoding='utf8'):"
+p167
+sI986
+S'        self.caseSensitive = caseSensitive'
+p168
+sI987
+S'        self.encoding = encoding'
+p169
+sI988
+S"        self._setup(text, style, bulletText or getattr(style,'bulletText',None), frags, cleanBlockQuotedText)"
+p170
+sI989
+S''
+sI990
+S''
+sI991
+S'    def __repr__(self):'
+p171
+ssg83
+S"(self=Paragraph(\n'caseSensitive': 1\n'encoding': 'utf8'\n) #Paragraph, text=<Rows (2)>, style=<ParagraphStyle 'Normal'>, bulletText=None, frags=None, caseSensitive=1, encoding='utf8')"
+p172
+sg85
+g50
+sa(dp173
+g62
+S'/usr/lib/python2.7/dist-packages/reportlab/platypus/paragraph.py'
+p174
+sg64
+(dp175
+S'text'
+p176
+S'<Rows (2)>'
+p177
+sS'cleaner'
+p178
+S'<function cleanBlockQuotedText>'
+p179
+ssg70
+I1007
+sg71
+(dp180
+I1002
+S'        #This used to be a global parser to save overhead.'
+p181
+sI1003
+S'        #In the interests of thread safety it is being instantiated per paragraph.'
+p182
+sI1004
+S"        #On the next release, we'll replace with a cElementTree parser"
+p183
+sI1005
+S''
+sI1006
+S'        if frags is None:'
+p184
+sI1007
+S'            text = cleaner(text)'
+p185
+sI1008
+S'            _parser = ParaParser()'
+p186
+sI1009
+S'            _parser.caseSensitive = self.caseSensitive'
+p187
+sI1010
+S'            style, frags, bulletTextFrags = _parser.parse(text,style)'
+p188
+sI1011
+S'            if frags is None:'
+p189
+ssg83
+S"(self=Paragraph(\n'caseSensitive': 1\n'encoding': 'utf8'\n) #Paragraph, text=<Rows (2)>, style=<ParagraphStyle 'Normal'>, bulletText=None, frags=None, cleaner=<function cleanBlockQuotedText>)"
+p190
+sg85
+S'_setup'
+p191
+sa(dp192
+g62
+S'/usr/lib/python2.7/dist-packages/reportlab/platypus/paragraph.py'
+p193
+sg64
+(dp194
+S'builtinlist'
+p195
+S"<type 'list'>"
+p196
+sS'text'
+p197
+S'<Rows (2)>'
+p198
+sS'L'
+g105
+sS'builtinfilter'
+p199
+S'<built-in function filter>'
+p200
+sS'global _lineClean'
+p201
+S'<function _lineClean>'
+p202
+sS'global truth'
+p203
+S'<built-in function truth>'
+p204
+sS'global split'
+p205
+S'<function split>'
+p206
+sS'builtinmap'
+p207
+S'<built-in function map>'
+p208
+ssg70
+I100
+sg71
+(dp209
+I96
+S"def cleanBlockQuotedText(text,joiner=' '):"
+p210
+sI97
+S'    """This is an internal utility which takes triple-'
+p211
+sI98
+S'    quoted text form within the document and returns'
+p212
+sI99
+S'    (hopefully) the paragraph the user intended originally."""'
+p213
+sI100
+S"    L=list(filter(truth,list(map(_lineClean, split(text, '\\n')))))"
+p214
+sI101
+S'    return joiner.join(L)'
+p215
+sI102
+S''
+sI103
+S'def setXPos(tx,dx):'
+p216
+sI104
+S'    if dx>1e-6 or dx<-1e-6:'
+p217
+sI95
+S''
+ssg83
+S"(text=<Rows (2)>, joiner=' ')"
+p218
+sg85
+S'cleanBlockQuotedText'
+p219
+sa(dp220
+g62
+S'/usr/lib/python2.7/dist-packages/reportlab/platypus/paragraph.py'
+p221
+sg64
+(dp222
+S'builtinNone'
+p223
+S'None'
+p224
+sS'text.split'
+p225
+g105
+sS'uword'
+p226
+g105
+sS'delim'
+p227
+S"u'\\n'"
+p228
+sS'global _wsc_re_split'
+p229
+S'<built-in method split of _sre.SRE_Pattern object>'
+p230
+sS'text'
+p231
+S'<Rows (2)>'
+p232
+ssg70
+I65
+sg71
+(dp233
+I64
+S"    if delim is not None and isBytes(delim): delim = delim.decode('utf8')"
+p234
+sI65
+S"    return [uword for uword in (_wsc_re_split(text) if delim is None and u'\\xa0' in text else text.split(delim))]"
+p235
+sI66
+S''
+sI67
+S'def strip(text):'
+p236
+sI68
+S"    if isBytes(text): text = text.decode('utf8')"
+p237
+sI69
+S'    return text.strip(_wsc)'
+p238
+sI60
+S"_wsc_re_split=re.compile('[%s]+'% re.escape(_wsc)).split"
+p239
+sI61
+S''
+sI62
+S'def split(text, delim=None):'
+p240
+sI63
+S"    if isBytes(text): text = text.decode('utf8')"
+p241
+ssg83
+S"(text=<Rows (2)>, delim=u'\\n')"
+p242
+sg85
+S'split'
+p243
+sasS'pyver'
+p244
+S'Python 2.7.6: /usr/bin/python (prefix: /usr)'
+p245
+sS'session'
+p246
+g57
+(S's\x1a\x00\x00\x00<div><table></table></div>'
+tRp247
+sS'etype'
+p248
+S"<type 'exceptions.AttributeError'>"
+p249
+sS'date'
+p250
+S'Tue Nov 15 16:44:16 2016'
+p251
+sS'response'
+p252
+g57
+(S's\xc2\x1d\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">body</td><td style="vertical-align:top;">:</td><td><div>&lt;cStringIO.StringO object at 0x7fb574449420&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_app2</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-84e6ee1c-ab5f-4639-839e-d73d2e22a0e4<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">delimiters</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>{{</div></td></tr><tr><td><div>}}</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">files</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">form_label_separator</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">formstyle</td><td style="vertical-align:top;">:</td><td><div>bootstrap3_inline</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generic_patterns</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>*</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">google_analytics_id</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">headers</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">X-Powered-By</td><td style="vertical-align:top;">:</td><td><div>web2py</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">logo</td><td style="vertical-align:top;">:</td><td><div><a class="navbar-brand" href="index" id="web2py-logo"><b>My Blog</b>&nbsp;</a></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div><table><tr><td><div>Post</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/app2/default/index</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Create Post</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/app2/default/create</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">meta</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">author</td><td style="vertical-align:top;">:</td><td><div>Your Name &lt;you@example.com&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">description</td><td style="vertical-align:top;">:</td><td><div>a cool new app</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generator</td><td style="vertical-align:top;">:</td><td><div>Web2py Web Framework</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">keywords</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>web2py</div></td></tr><tr><td><div>python</div></td></tr><tr><td><div>framework</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">models_to_run</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>^\\w+\\.py$</div></td></tr><tr><td><div>^default/\\w+\\.py$</div></td></tr><tr><td><div>^default/generatepdf/\\w+\\.py$</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">postprocessing</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_compression_level</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_expires</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_data_name</td><td style="vertical-align:top;">:</td><td><div>session_data_app2</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_file</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;/home/sanu/web2py/applications/app2/sessions/161/11a/127.0.0.1-84e6ee1c-ab5f-4639-839e-d73d2e22a0e4&#x27;, mode &#x27;rb+&#x27; at 0x7fb58e9fe030&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_filename</td><td style="vertical-align:top;">:</td><td><div>/home/sanu/web2py/applications/app2/sessions/127.0.0.1-84e6ee1c-ab5f-4639-839e-d73d2e22a0e4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_hash</td><td style="vertical-align:top;">:</td><td><div>c0762cbf4baf7f9af97c051e7fcb8083</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-84e6ee1c-ab5f-4639-839e-d73d2e22a0e4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_name</td><td style="vertical-align:top;">:</td><td><div>session_id_app2</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_locked</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_masterapp</td><td style="vertical-align:top;">:</td><td><div>app2</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_new</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_storage_type</td><td style="vertical-align:top;">:</td><td><div>file</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">status</td><td style="vertical-align:top;">:</td><td><div>200</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">subtitle</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">title</td><td style="vertical-align:top;">:</td><td><div>App2</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">view</td><td style="vertical-align:top;">:</td><td><div>default/generatepdf.html</div></td></tr></table></div>'
+tRp253
+sS'locals'
+p254
+(dp255
+S'text'
+p256
+S'<Rows (2)>'
+p257
+sS'delim'
+p258
+S"u'\\n'"
+p259
+sssS'traceback'
+p260
+S'Traceback (most recent call last):\n  File "/home/sanu/web2py/gluon/restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "/home/sanu/web2py/applications/app2/controllers/default.py", line 145, in <module>\n  File "/home/sanu/web2py/gluon/globals.py", line 417, in <lambda>\n    self._caller = lambda f: f()\n  File "/home/sanu/web2py/applications/app2/controllers/default.py", line 36, in generatepdf\n    Paragraph(rows, styles[\'Normal\'])]\n  File "/usr/lib/python2.7/dist-packages/reportlab/platypus/paragraph.py", line 988, in __init__\n    self._setup(text, style, bulletText or getattr(style,\'bulletText\',None), frags, cleanBlockQuotedText)\n  File "/usr/lib/python2.7/dist-packages/reportlab/platypus/paragraph.py", line 1007, in _setup\n    text = cleaner(text)\n  File "/usr/lib/python2.7/dist-packages/reportlab/platypus/paragraph.py", line 100, in cleanBlockQuotedText\n    L=list(filter(truth,list(map(_lineClean, split(text, \'\\n\')))))\n  File "/usr/lib/python2.7/dist-packages/reportlab/platypus/paragraph.py", line 65, in split\n    return [uword for uword in (_wsc_re_split(text) if delim is None and u\'\\xa0\' in text else text.split(delim))]\nAttributeError: \'Rows\' object has no attribute \'split\'\n'
+p261
+s.

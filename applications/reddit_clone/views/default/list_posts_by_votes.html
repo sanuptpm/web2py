@@ -1,0 +1,8 @@
+{{extend 'layout.html'}}
+
+<h1>{{=category.name}}</h1>
+{{for post in rows:}}
+<div class="well">
+	<span class="votes">{{=post.votes}}</span> {{=A(post.title, _href=URL('view_post', args=post.id))}}
+</div>
+{{pass}}

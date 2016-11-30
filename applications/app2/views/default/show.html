@@ -1,0 +1,29 @@
+{{extend 'layout.html'}}
+<h1>Show Post</h1>
+<table class="table">
+	<tr>
+		<td>{{=post.photo}}
+			<div style="text-align:center">
+				<img src={{=post.photo}} />
+			</div>
+		</td>
+		<td>
+			<h2>{{=post.title}}</h2>
+			<i>Posted On: {{=post.created_on}} by {{=post.created_by.first_name}} {{=post.created_by.last_name}}</i>
+			<p>
+				{{=XML(post.body, sanitize=True)}}
+			</p>	
+		</td>
+	</tr>
+</table>
+
+<h2>Previous Comments For This Post</h2>
+{{for comment in comments:}}
+	<div class="well">
+		<b>{{=comment.created_by.first_name}} {{=comment.created_by.last_name}}:</b>
+		{{=comment.comments}} created on 
+		{{=comment.created_on}}
+		{{pass}}
+	</div>
+
+{{=form}}

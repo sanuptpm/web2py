@@ -1,0 +1,114 @@
+timestamp: 2016-10-26T11:06:50.012637
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2016-10-26T11:06:50.118980
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2016-10-26T11:06:50.219443
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2016-10-26T11:06:50.337272
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  ,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2016-10-26T11:06:50.462747
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2016-10-26T11:06:50.596500
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2016-10-26T11:06:50.729596
+CREATE TABLE company(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512) NOT NULL UNIQUE
+);
+success!
+timestamp: 2016-10-26T11:06:50.863422
+CREATE TABLE contact(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512) NOT NULL,
+    company INTEGER REFERENCES company (id) ON DELETE CASCADE  ,
+    picture CHAR(512),
+    email CHAR(512),
+    phone_number CHAR(512),
+    address CHAR(512)
+);
+success!
+timestamp: 2016-10-26T11:11:22.837735
+CREATE TABLE logs(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    body TEXT NOT NULL,
+    posted_on TIMESTAMP,
+    contact INTEGER REFERENCES contact (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2016-10-26T18:05:14.504733
+CREATE TABLE person(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    email CHAR(512)
+);
+success!
+timestamp: 2016-10-26T18:05:14.604014
+CREATE TABLE product(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    seller_id INTEGER REFERENCES person (id) ON DELETE CASCADE  ,
+    name CHAR(512),
+    description TEXT,
+    picture CHAR(512)
+);
+success!
+timestamp: 2016-10-26T18:05:14.755617
+CREATE TABLE purchase(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    buyer_id INTEGER REFERENCES person (id) ON DELETE CASCADE  ,
+    product_id INTEGER REFERENCES product (id) ON DELETE CASCADE  ,
+    quantity INTEGER
+);
+success!
+timestamp: 2016-10-27T10:31:13.415690
+CREATE TABLE the_aliaser(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    description TEXT,
+    the_url CHAR(512),
+    the_slug CHAR(512) UNIQUE,
+    alias_url CHAR(512)
+);
+success!

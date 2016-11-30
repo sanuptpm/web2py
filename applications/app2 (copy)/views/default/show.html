@@ -1,0 +1,23 @@
+{{extend 'layout.html'}}
+<h1>Show Post</h1>
+<table class="table">
+	<tr>
+		<td>
+			<h2>{{=post.title}}</h2>
+			<i>Posted On: {{=post.created_on}} by {{=post.created_by.first_name}} {{=post.created_by.last_name}}</i>
+			<p>
+				{{=XML(post.body, sanitize=True)}}
+			</p>	
+		</td>
+	</tr>
+</table>
+
+<h2>Previous Comments</h2>
+{{for comment in comments:}}
+	<div class="well">
+		{{=comment.comments}} created on 
+		{{=comment.created_on}}
+		{{pass}}
+	</div>
+
+{{=form}}
